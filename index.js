@@ -3,12 +3,14 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 
+const cors = require('cors');
+
 require('./database')();
 
 app.use(express.json());
 app.use('/api',require('./routes'))
 
-app.use(require('cors')());
+app.use(cors());
 
 app.get('/',(req,res)=>{
     res.send({message:"Everything great"})
