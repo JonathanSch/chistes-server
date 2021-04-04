@@ -5,7 +5,7 @@ const Chiste = require('../schema/Chiste')
 router.get('/obtener',async (req,res)=>{
     const chistes = await Chiste.find().limit(5);
 
-    res.send({chistes});
+    res.send({chistes}).status(200);
 })
 
 router.post('/subirChiste',async (req,res)=>{
@@ -15,13 +15,13 @@ router.post('/subirChiste',async (req,res)=>{
     });
 
     const chisteSubido = await nuevoChiste.save();
-    res.send({chisteSubido});
+    res.send({chisteSubido}).status(201);
 })
 
 router.delete('/borrarChiste',async (req,res)=>{
     const chisteBorrado = await Chiste.findOneAndDelete({texto:req.body.texto});
 
-    res.send({chisteBorrado});
+    res.send({chisteBorrado}).status(200);
 })
 
 module.exports = router;
