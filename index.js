@@ -8,6 +8,8 @@ require('./database')();
 app.use(express.json());
 app.use('/api',require('./routes'))
 
+app.use(require('cors')());
+
 app.get('/',(req,res)=>{
     res.send({message:"Everything great"})
 });
